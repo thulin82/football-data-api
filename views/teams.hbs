@@ -67,11 +67,12 @@
 
                     <div class="content has-text-centered">
                         <ul>
-                        {{#each fixtures}}
+                        {{#each fixtures.matches}}
                             <li>
-                                <strong>{{ homeTeamName }}</strong>
+                                <strong>{{ homeTeam.name }}</strong>
                                  vs
-                                <strong>{{ awayTeamName }}</strong>
+                                <strong>{{ awayTeam.name }}</strong>
+                                {{ competition.name }}
                             </li>
                         {{/each}}
                         </ul>

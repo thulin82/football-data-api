@@ -37,6 +37,7 @@ router.get('/', function (req, response) {
 router.get('/team/:id', function (req, response) {
     let teamId = req.params.id;
     let url = `https://api.football-data.org/v2/teams/${teamId}`;
+    let url2 = `https://api.football-data.org/v2/teams/${teamId}/matches?status=SCHEDULED&limit=5`;
 
     var options = {
         method: "GET",
@@ -47,6 +48,7 @@ router.get('/team/:id', function (req, response) {
     };
 
     let data ="";
+    let teamdata="";
 
     https.get(url, options, function(res) {
         console.log("Connected");
@@ -58,8 +60,25 @@ router.get('/team/:id', function (req, response) {
         res.on("end", () => {
             console.log("data collected");
             var json = JSON.parse(data);
+            teamdata = json;
             response.set('Content-Type', 'text/html');
-            response.render('teams', {result: json});
+        });
+    });
+
+    let data2 ="";
+
+    https.get(url2, options, function(res) {
+        console.log("Connected");
+
+        res.on("data", chunk => {
+            data2 += chunk;
+        });
+
+        res.on("end", () => {
+            console.log("data collected");
+            var json2 = JSON.parse(data2);
+            response.set('Content-Type', 'text/html');
+            response.render('teams', {result: teamdata, fixtures: json2});
         });
     });
 });
