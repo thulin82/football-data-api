@@ -61,7 +61,6 @@ router.get('/team/:id', function (req, response) {
             console.log("data collected");
             var json = JSON.parse(data);
             teamdata = json;
-            response.set('Content-Type', 'text/html');
         });
     });
 
@@ -77,7 +76,6 @@ router.get('/team/:id', function (req, response) {
         res.on("end", () => {
             console.log("data collected");
             var json2 = JSON.parse(data2);
-            response.set('Content-Type', 'text/html');
             response.render('teams', {result: teamdata, fixtures: json2});
         });
     });
