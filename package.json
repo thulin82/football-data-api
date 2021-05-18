@@ -14,13 +14,13 @@
         "url": "https://github.com/thulin82/football-data-api"
     },
     "dependencies": {
-        "cors": "^2.8.5",
-        "dotenv": "^8.1.0",
-        "express": "^4.17.1",
+        "cors": "^2.8.0",
+        "dotenv": "^9.0.0",
+        "express": "^4.17.0",
         "hbs": "^4.1.0"
     },
     "devDependencies": {
         "eslint": "^7.26.0",
-        "nodemon": "^2.0.2"
+        "nodemon": "^2.0.0"
     }
 }
